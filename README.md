@@ -1,4 +1,4 @@
-# [NOM_DU_PROJET]
+# Liane
 
 > Plateforme moderne de gestion et d'optimisation de tournées pour infirmier(e)s libéral(e)s à domicile.
 
@@ -153,10 +153,7 @@ Dans le cadre d'une éventuelle commercialisation, une migration vers un **hébe
 
 `TypeScript` `NestJS` `Nuxt 3` `React Native` `Expo` `PostgreSQL` `PostGIS` `Python` `FastAPI` `Google OR-Tools` `OSRM` `Docker`
 
-## 📄 Licence
-
-[À DÉCIDER]
 
 ## 👤 Auteur
 
-[À COMPLÉTER — ton nom, lien GitHub, éventuellement LinkedIn]
+**Ihlane** ([@1lAaN](https://github.com/1lAaN)) — [ihlane.me](https://ihlane.me)
