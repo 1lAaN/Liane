@@ -5,6 +5,44 @@
 
 ---
 
+## 2026-06-03 — Phase 1 : Prisma + première migration
+
+### Ce qu'on a fait
+- Installation de Prisma dans `apps/api` (downgrade Prisma 7 → 6 pour compatibilité NestJS)
+- Écriture du `schema.prisma` avec les modèles `Cabinet` et `Infirmier` (relation FK)
+- Première migration Prisma (`migrate dev --name init`) → tables créées en BDD
+- Création du `PrismaService` (extends PrismaClient + OnModuleInit)
+- Enregistrement du `PrismaService` dans `AppModule`
+- NestJS démarre avec Prisma connecté ✅
+
+### Décisions prises
+- **Downgrade Prisma 7 → 6** : Prisma 7 a supprimé `url` dans `schema.prisma` et impose les driver adapters — trop de friction pour un projet d'apprentissage. Prisma 6 est stable et bien documenté pour NestJS.
+- Utiliser `pnpm exec prisma` (pas `pnpm dlx`) pour utiliser la version locale installée
+
+### Concepts appris (côté Ihlane)
+- ORM : traduction entre tables BDD et objets TypeScript
+- Syntaxe Prisma : `@id`, `@default`, `@updatedAt`, `@relation`
+- Migration Prisma : `schema.prisma` → SQL généré → appliqué à la BDD
+- `pnpm dlx` vs `pnpm exec` : dlx télécharge la dernière version, exec utilise la locale
+- `extends` en TypeScript : même syntaxe qu'en Java
+
+### Problèmes rencontrés et solutions
+- Prisma 7 incompatible avec NestJS CommonJS → downgrade à Prisma 6
+- `pnpm dlx prisma generate` utilisait Prisma 7 → remplacé par `pnpm exec prisma generate`
+- Import `../generated/prisma` sans index.ts → corrigé en `../generated/prisma/client` (puis abandonné avec le downgrade)
+
+### Prochaine étape
+- Créer un `PrismaModule` pour exposer `PrismaService` à tous les modules
+- Créer le premier vrai module NestJS : `CabinetModule` avec son controller et service
+- Écrire la première vraie requête Prisma (lister les cabinets)
+
+### État du projet
+- Phase en cours : **Phase 1 — Fondations**
+- Ce qui marche : monorepo ✅, Docker Postgres+PostGIS ✅, NestJS ✅, Prisma connecté ✅
+- Ce qui reste dans la phase : premier module métier (Cabinet), test des routes API
+
+---
+
 ## 2026-06-03 — Phase 1 : Setup monorepo + Docker + NestJS
 
 ### Ce qu'on a fait

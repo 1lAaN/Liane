@@ -3,4 +3,7 @@ packages:
   - 'packages/*'
 allowBuilds:
   '@nestjs/core': true
+  '@prisma/client': set this to true or false
+  '@prisma/engines': true
+  prisma: true
   unrs-resolver: true
