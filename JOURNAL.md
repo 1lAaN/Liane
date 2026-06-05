@@ -5,6 +5,37 @@
 
 ---
 
+## 2026-06-05 — Phase 1 : InfirmierModule CRUD complet
+
+### Ce qu'on a fait
+- Création du `InfirmierModule` complet : controller, service, DTOs, module
+- CRUD complet sur `Infirmier` : GET all, GET :id, POST, PATCH :id, DELETE :id
+- Test de toutes les routes avec Thunder Client
+- Ajout de `InfirmierModule` dans `AppModule`
+
+### Décisions prises
+- Même structure que `CabinetModule` — la répétition est volontaire pour ancrer le pattern
+
+### Concepts appris (côté Ihlane)
+- Les séquences PostgreSQL ne se réinitialisent pas à la suppression — un id utilisé ne sera jamais réattribué
+- La FK `cabinetId` n'est pas encore validée côté API (on accepte n'importe quelle valeur) — à corriger avec de la validation plus tard
+
+### Problèmes rencontrés et solutions
+- Chemin absolu `'src/prisma.service'` au lieu de relatif `'../prisma.service'` → corrigé
+- `cabinetId?: string` dans le DTO update → corrigé en `number`
+- `update()` sans `id` en paramètre → corrigé en s'inspirant du CabinetService
+
+### Prochaine étape
+- **Clôture Phase 1** : faire le point sur ce qui est en place
+- Démarrer **Phase 2** : module Patient avec géocodage (API Adresse data.gouv.fr)
+
+### État du projet
+- Phase en cours : **Phase 1 — fin**
+- Ce qui marche : monorepo ✅, Docker ✅, NestJS ✅, Prisma ✅, CabinetModule ✅, InfirmierModule ✅
+- Ce qui reste : validation des données, puis Phase 2
+
+---
+
 ## 2026-06-05 — Phase 1 : CabinetModule CRUD complet
 
 ### Ce qu'on a fait
