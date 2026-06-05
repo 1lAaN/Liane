@@ -93,7 +93,7 @@ liane/
 
 À chaque étape :
 
-1. **Explique-moi d'abord ce qu'on va faire et pourquoi**, avant de me donner du code.
+1. **Explique-moi d'abord ce qu'on va faire et pourquoi**, avant de me donner du code. ⚠️ Ihlane a rappelé que cette règle doit s'appliquer même pour les petites choses — ne pas glisser vers du "fais ça" sans expliquer pourquoi. Chaque décorateur, méthode, fichier doit avoir son explication avant.
 2. **Décompose les concepts nouveaux** : si tu utilises un terme ou une techno que je ne connais pas, explique-le.
 3. **Donne-moi du contexte** : pourquoi on choisit cette approche, quelles sont les alternatives, quels sont les pièges.
 4. **Fais-moi écrire le code quand c'est pertinent** : propose-moi des exercices, des "à toi de jouer", surtout sur les concepts importants.
@@ -184,6 +184,14 @@ Si je propose une mauvaise approche, dis-le-moi clairement, avec les raisons. Pa
 
 On en est au **début de la Phase 1**.
 
+### Versioning (semver)
+
+Tous les `package.json` restent à `0.0.1` jusqu'à la fin de la Phase 3.
+
+**À la fin de la Phase 3** (UI web complète et utilisable) : rappeler à Ihlane de passer à `v0.1.0` et de créer un tag Git. C'est le premier jalon portfolio-ready.
+
+Ensuite, incrémenter `MINOR` à chaque fin de phase (Phase 4 → `v0.2.0`, Phase 5 → `v0.3.0`, etc.).
+
 ---
 
 ## 📦 Modèle de données (validé en Phase 0)
@@ -239,7 +247,7 @@ J'utilise Claude Code comme **outil pédagogique** (un prof), pas comme co-déve
 - Le message doit être un message Conventional Commits standard, comme si je l'avais écrit moi-même.
 
 ### Conventional Commits
-Format : `type: description courte en anglais`
+Format : `type: description courte en français`
 
 Types utilisés :
 - `feat:` nouvelle fonctionnalité

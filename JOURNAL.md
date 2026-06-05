@@ -5,6 +5,40 @@
 
 ---
 
+## 2026-06-05 — Phase 1 : CabinetModule CRUD complet
+
+### Ce qu'on a fait
+- Création du `PrismaModule` pour exposer `PrismaService` à tous les modules
+- Création du `CabinetModule` complet : controller, service, DTOs
+- CRUD complet sur `Cabinet` : GET all, GET :id, POST, PATCH :id, DELETE :id
+- Test de toutes les routes avec Thunder Client
+
+### Décisions prises
+- PATCH plutôt que PUT pour les mises à jour partielles (on n'envoie que les champs modifiés)
+- DTOs séparés pour create (`nom!`, `adresse!` requis) et update (`nom?`, `adresse?` optionnels)
+
+### Concepts appris (côté Ihlane)
+- `@Param('id')` vs `@Body()` vs `@Query()` — décorateurs de paramètres, tous dans les parenthèses de la méthode
+- PUT vs PATCH — remplacement total vs modification partielle
+- `!` (champ requis) vs `?` (champ optionnel) dans un DTO TypeScript
+- Séparation des responsabilités : controller reçoit, service traite, Prisma parle à la BDD
+- Un module sans routes HTTP n'a pas de `controllers` (ex: `PrismaModule`)
+
+### Problèmes rencontrés et solutions
+- `@Param()` sans nom → retourne l'objet entier au lieu de la valeur → toujours préciser `@Param('id')`
+- Import `Delete` mis dans le service au lieu du controller → supprimé
+
+### Prochaine étape
+- Créer `InfirmierModule` avec CRUD complet (même structure que Cabinet)
+- La relation Cabinet → Infirmier sera le premier vrai test des relations Prisma
+
+### État du projet
+- Phase en cours : **Phase 1 — Fondations**
+- Ce qui marche : monorepo ✅, Docker ✅, NestJS ✅, Prisma ✅, CabinetModule CRUD ✅
+- Ce qui reste dans la phase : InfirmierModule, puis clôture Phase 1
+
+---
+
 ## 2026-06-03 — Phase 1 : Prisma + première migration
 
 ### Ce qu'on a fait
