@@ -5,6 +5,33 @@
 
 ---
 
+## 2026-06-10 — Phase 2 : PatientModule + migration
+
+### Ce qu'on a fait
+- Ajout du modèle `Patient` dans `schema.prisma` (avec `latitude Float?` et `longitude Float?`)
+- Ajout de la relation inverse `patients Patient[]` dans `Cabinet`
+- Migration `add-patient` appliquée en BDD
+- Création du `PatientModule` complet : controller, service, DTOs, module
+- Test `POST /patients` → `latitude` et `longitude` stockés à `null` ✅
+
+### Décisions prises
+- `latitude` et `longitude` sont optionnels (`Float?`) — ils seront remplis par le géocodage, pas à la création manuelle
+- `cabinetId` est requis dans le DTO de création (le patient appartient au cabinet)
+
+### Concepts appris (côté Ihlane)
+- En JSON, les nombres s'écrivent sans guillemets (`"cabinetId": 1` et non `"cabinetId": "1"`)
+- Sur l'UI future, l'utilisateur ne verra jamais de champ `id` brut — le frontend récupère la liste et envoie l'id automatiquement
+
+### Prochaine étape
+- Ajouter le **géocodage** dans `PatientService.create()` : appel à l'API Adresse (data.gouv.fr) pour remplir `latitude` et `longitude` automatiquement depuis l'adresse
+
+### État du projet
+- Phase en cours : **Phase 2 — Métier**
+- Ce qui marche : CabinetModule ✅, InfirmierModule ✅, PatientModule CRUD ✅
+- Ce qui reste : géocodage, puis OrdonnanceModule + SoinModule
+
+---
+
 ## 2026-06-05 — Phase 1 : InfirmierModule CRUD complet
 
 ### Ce qu'on a fait
